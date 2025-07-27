@@ -28,17 +28,23 @@ const sweetFoods = [
 
 export default function FoodLogPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleAdd = () => {
+    setCartCount((prev) => prev + 1);
+  };
+
+  const filterFoods = (foods) =>
+    foods.filter((f) => f.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <div className="page">
-      {/* Header */}
-    <div className="topbar">
-  <Link href="/line/home" className="back-btn"></Link>
-  <h1>บันทึกอาหาร</h1>
-  <Image src="/pig-icon.png" alt="icon" width={30} height={30} />
-</div>
+      <div className="topbar">
+        <Link href="/line/home" className="back-btn"></Link>
+        <h1>บันทึกอาหาร</h1>
+        <Image src="/pig-icon.png" alt="icon" width={30} height={30} />
+      </div>
 
-      {/* Search */}
       <div className="search-box">
         <input
           type="text"
@@ -46,48 +52,52 @@ export default function FoodLogPage() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <div className="cart">
+          <Image src="/icons/cart.png" alt="cart" width={18} height={18} />
+          {cartCount}
+        </div>
       </div>
 
-      {/* Category */}
       <div className="category-scroll">
         {categories.map((c) => (
           <div key={c.name} className="category-item">
-            <Image src={c.icon} alt={c.name} width={50} height={50} />
+            <Image src={c.icon} alt={c.name} width={40} height={40} />
             <span>{c.name}</span>
           </div>
         ))}
       </div>
 
-      {/* Banner */}
-      <div className="banner-area">
-        <Image src="/banners/100kcal.png" alt="banner" width={340} height={100} />
+      <div className="banner-wrapper">
+        <div className="banner-scroll">
+          <Image src="/banners/100kcal.png" alt="banner1" width={320} height={100} />
+          <Image src="/banners/banner2.png" alt="banner2" width={320} height={100} />
+          <Image src="/banners/banner3.png" alt="banner3" width={320} height={100} />
+        </div>
       </div>
 
-      {/* Savory Section */}
       <div className="section">
         <h2>อาหารคาว</h2>
         <div className="food-grid">
-          {savoryFoods.map((f) => (
+          {filterFoods(savoryFoods).map((f) => (
             <div key={f.name} className="food-item">
               <Image src={f.image} alt={f.name} width={80} height={80} />
               <div className="food-name">{f.name}</div>
               <div className="cal">{f.calories} แคลอรี่</div>
-              <button className="add-btn">+</button>
+              <button className="add-btn" onClick={handleAdd}>+</button>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Sweet Section */}
       <div className="section">
         <h2>อาหารหวาน</h2>
         <div className="food-grid">
-          {sweetFoods.map((f) => (
+          {filterFoods(sweetFoods).map((f) => (
             <div key={f.name} className="food-item">
               <Image src={f.image} alt={f.name} width={80} height={80} />
               <div className="food-name">{f.name}</div>
               <div className="cal">{f.calories} แคลอรี่</div>
-              <button className="add-btn">+</button>
+              <button className="add-btn" onClick={handleAdd}>+</button>
             </div>
           ))}
         </div>
@@ -99,7 +109,7 @@ export default function FoodLogPage() {
         .page {
           background: #f3fdf1;
           min-height: 100vh;
-          padding-bottom: 100px;
+          padding-bottom: 80px;
         }
 
         .topbar {
@@ -111,24 +121,28 @@ export default function FoodLogPage() {
           color: white;
         }
 
-       .back-btn {
-           background: none;
-           border: none;
-           font-size: 18px;
-           color: white;
-           text-decoration: none; 
-}
-
         .search-box {
           background: white;
-          padding: 12px 16px;
+          display: flex;
+          align-items: center;
+          padding: 10px 16px;
+          gap: 10px;
+          background: #3abb47;
         }
 
         .search-box input {
-          width: 100%;
-          padding: 10px;
+          flex: 1;
+          padding: 10px 16px;
           border-radius: 20px;
           border: 1px solid #ccc;
+        }
+
+        .cart {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: #3abb47;
+          font-weight: bold;
         }
 
         .category-scroll {
@@ -144,10 +158,15 @@ export default function FoodLogPage() {
           font-size: 12px;
         }
 
-        .banner-area {
-          display: flex;
-          justify-content: center;
+        .banner-wrapper {
+          overflow-x: auto;
           margin: 16px 0;
+        }
+
+        .banner-scroll {
+          display: flex;
+          gap: 12px;
+          padding: 0 16px;
         }
 
         .section {
