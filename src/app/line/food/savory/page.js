@@ -4,21 +4,33 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const initialFoods = [
-  { name: 'ข้าวผัดหมู', calories: 400, image: '/foods/fried-rice.png' },
-  { name: 'ต้มยำกุ้ง', calories: 150, image: '/foods/tomyam.png' },
-  { name: 'แกงเขียวหวานไก่', calories: 300, image: '/foods/green-curry.png' },
-  { name: 'ยำกุ้งหมู', calories: 250, image: '/foods/spicy-salad.png' },
-  { name: 'อกไก่นึ่ง', calories: 120, image: '/foods/steamed-chicken.png' },
-  { name: 'ผัดผักรวม', calories: 180, image: '/foods/mixed-veg.png' },
-  { name: 'กุ้งอบเกลือหวาน', calories: 250, image: '/foods/shrimp-sweet.png' },
-  { name: 'กุ้งผัดซอส', calories: 350, image: '/foods/shrimp-sauce.png' },
-  { name: 'ข้าวผัดกุ้ง', calories: 450, image: '/foods/shrimp-rice.png' },
+const fruitMenus = [
+  { name: 'ขนมครก', calories: 180, image: '/foods/khanom-khrok.png' },
+  { name: 'หมูปิ้ง (3 ไม้)', calories: 250, image: '/foods/moo-ping-3.png' },
+  { name: 'ลูกชิ้นปิ้ง (5 ลูก)', calories: 120, image: '/foods/look-chin-ping-5.png' },
+  { name: 'เฉาก๊วย', calories: 120, image: '/foods/chao-kuai.png' },
+  { name: 'ไข่ตุ๋น', calories: 120, image: '/foods/kai-tun.png' },
+  { name: 'ข้าวโพดปิ้ง', calories: 100, image: '/foods/khao-phot-ping.png' },
+  { name: 'กล้วยทอด', calories: 250, image: '/foods/kluai-thot.png' },
+  { name: 'มันทอด', calories: 150, image: '/foods/man-thot.png' },
+  { name: 'ถั่วทอด', calories: 200, image: '/foods/thua-thot.png' },
+  { name: 'เกี๊ยวทอด', calories: 190, image: '/foods/kiao-thot.png' },
+  { name: 'ปลาเส้นทอดกรอบ', calories: 140, image: '/foods/pla-sen-thot-krop.png' },
+  { name: 'ทอดมันปลากราย', calories: 220, image: '/foods/thot-man-pla-krai.png' },
+  { name: 'แหนมหม้อ', calories: 180, image: '/foods/naem-mor.png' },
+  { name: 'ปอเปี๊ยะทอด', calories: 200, image: '/foods/por-pia-thot.png' },
+  { name: 'ไส้กรอกอีสาน', calories: 250, image: '/foods/sai-krok-isan.png' },
+  { name: 'หอยทอด', calories: 300, image: '/foods/hoi-thot.png' },
+  { name: 'ข้าวเกรียบปากหม้อ', calories: 200, image: '/foods/khao-kriap-pak-mor.png' },
+  { name: 'เต้าหู้ทอด', calories: 120, image: '/foods/tao-hu-thot.png' },
+  { name: 'ลูกเดือยต้ม', calories: 100, image: '/foods/look-dueai-tom.png' },
+  { name: 'ปลาหมึกบด', calories: 150, image: '/foods/pla-muek-bot.png' }
 ];
+
 
 export default function SavoryPage() {
   const [cartCount, setCartCount] = useState(0);
-  const [foods, setFoods] = useState(initialFoods);
+  const [foods, setFoods] = useState(fruitMenus);
   const [showModal, setShowModal] = useState(false);
   const [newFoodName, setNewFoodName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -90,7 +102,7 @@ export default function SavoryPage() {
 
       <div className="tabs">
         <div className="tab-left">
-          <button className="active">อาหารคาว</button>
+          <button className="active">ผลไม้</button>
           <button className="add-new" onClick={() => setShowModal(true)}>+ เพิ่มเมนูใหม่</button>
         </div>
         <div className="cart">

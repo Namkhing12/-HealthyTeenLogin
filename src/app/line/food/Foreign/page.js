@@ -4,72 +4,33 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const drinkMenus = [
-  { name: 'น้ำส้มคั้น', calories: 100, image: '/foods/orange-juice.png' },
-  { name: 'โค้ก', calories: 150, image: '/foods/coke.png' },
-  { name: 'น้ำเปล่า', calories: 0, image: '/foods/water.png' },
-  { name: 'อเมริกาโน่', calories: 10, image: '/foods/americano.png' },
-  { name: 'ลาเต้ร้อน', calories: 150, image: '/foods/hot-latte.png' },
-  { name: 'น้ำมะนาว', calories: 90, image: '/foods/lemonade.png' },
-  { name: 'น้ำแตงโมปั่น', calories: 250, image: '/foods/watermelon-smoothie.png' },
-  { name: 'นมสดเย็น', calories: 370, image: '/foods/cold-milk.png' },
-  { name: 'ชานมไข่มุก', calories: 450, image: '/foods/bubble-tea.png' },
-  { name: 'ชาเขียวเย็น', calories: 200, image: '/foods/iced-green-tea.png' },
-  { name: 'เอสเพรสโซ่', calories: 5, image: '/foods/espresso.png' },
-  { name: 'คาปูชิโน่', calories: 120, image: '/foods/cappuccino.png' },
-  { name: 'น้ำองุ่น', calories: 110, image: '/foods/grape-juice.png' },
-  { name: 'น้ำแครอท', calories: 80, image: '/foods/carrot-juice.png' },
-  { name: 'น้ำมะพร้าว', calories: 45, image: '/foods/coconut-water.png' },
-  { name: 'น้ำแอปเปิ้ล', calories: 95, image: '/foods/apple-juice.png' },
-  { name: 'ชาเย็น', calories: 250, image: '/foods/thai-iced-tea.png' },
-  { name: 'โกโก้เย็น', calories: 300, image: '/foods/iced-cocoa.png' },
-  { name: 'สมูทตี้สตรอเบอร์รี่', calories: 200, image: '/foods/strawberry-smoothie.png' },
-  { name: 'น้ำเสาวรส', calories: 70, image: '/foods/passion-fruit-juice.png' },
-  { name: 'น้ำฝรั่ง', calories: 85, image: '/foods/guava-juice.png' },
-  { name: 'น้ำบลูเบอร์รี่', calories: 100, image: '/foods/blueberry-juice.png' },
-  { name: 'น้ำสับปะรด', calories: 85, image: '/foods/pineapple-juice.png' },
-  { name: 'น้ำมะเขือเทศ', calories: 40, image: '/foods/tomato-juice.png' },
-  { name: 'นมถั่วเหลือง', calories: 130, image: '/foods/soy-milk.png' },
-  { name: 'ชามะนาวเย็น', calories: 150, image: '/foods/lemon-iced-tea.png' },
-  { name: 'ชาดำเย็น', calories: 90, image: '/foods/iced-black-tea.png' },
-  { name: 'น้ำลิ้นจี่', calories: 120, image: '/foods/lychee-juice.png' },
-  { name: 'น้ำแตงโม', calories: 50, image: '/foods/watermelon-juice.png' },
-  { name: 'สมูทตี้มะม่วง', calories: 180, image: '/foods/mango-smoothie.png' },
-  { name: 'น้ำกล้วยปั่น', calories: 200, image: '/foods/banana-smoothie.png' },
-  { name: 'สมูทตี้กีวี', calories: 160, image: '/foods/kiwi-smoothie.png' },
-  { name: 'น้ำแครนเบอร์รี่', calories: 110, image: '/foods/cranberry-juice.png' },
-  { name: 'ชามัทฉะลาเต้เย็น', calories: 230, image: '/foods/iced-matcha-latte.png' },
-  { name: 'มิลค์เชคช็อกโกแลต', calories: 350, image: '/foods/chocolate-milkshake.png' },
-  { name: 'มิลค์เชควานิลลา', calories: 320, image: '/foods/vanilla-milkshake.png' },
-  { name: 'น้ำมะตูมเย็น', calories: 120, image: '/foods/iced-bael-fruit-tea.png' },
-  { name: 'น้ำเก๊กฮวยเย็น', calories: 100, image: '/foods/iced-chrysanthemum-tea.png' },
-  { name: 'น้ำอัญชันมะนาว', calories: 90, image: '/foods/butterfly-pea-lemon.png' },
-  { name: 'ชาพีชเย็น', calories: 140, image: '/foods/iced-peach-tea.png' },
-  { name: 'น้ำแครอท', calories: 50, image: '/foods/carrot-juice.png' },
-  { name: 'น้ำผักผลไม้รวม', calories: 70, image: '/foods/mixed-fruit-vegetable-juice.png' },
-  { name: 'สมูทตี้เขียว', calories: 100, image: '/foods/green-smoothie.png' },
-  { name: 'น้ำมะพร้าวสด', calories: 45, image: '/foods/fresh-coconut-water.png' },
-  { name: 'น้ำอ้อยสด', calories: 150, image: '/foods/sugarcane-juice.png' },
-  { name: 'น้ำมะนาว', calories: 30, image: '/foods/lemonade.png' },
-  { name: 'ชาเขียวไม่ใส่น้ำตาล', calories: 0, image: '/foods/unsweetened-green-tea.png' },
-  { name: 'น้ำขิง', calories: 60, image: '/foods/ginger-tea.png' },
-  { name: 'น้ำทับทิม', calories: 80, image: '/foods/pomegranate-juice.png' },
-  { name: 'น้ำแตงโมปั่น', calories: 90, image: '/foods/watermelon-smoothie.png' },
-  { name: 'น้ำมะม่วงปั่น', calories: 150, image: '/foods/mango-smoothie.png' },
-  { name: 'น้ำเสาวรส', calories: 60, image: '/foods/passion-fruit-juice.png' },
-  { name: 'นมอัลมอนด์', calories: 50, image: '/foods/almond-milk.png' },
-  { name: 'นมถั่วเหลือง', calories: 90, image: '/foods/soy-milk.png' },
-  { name: 'น้ำส้มคั้น', calories: 120, image: '/foods/orange-juice.png' },
-  { name: 'น้ำฝรั่ง', calories: 100, image: '/foods/guava-juice.png' },
-  { name: 'น้ำองุ่น', calories: 150, image: '/foods/grape-juice.png' },
-  { name: 'สมูทตี้มิกซ์เบอร์รี่', calories: 120, image: '/foods/mixed-berry-smoothie.png' },
-  { name: 'น้ำมะขาม', calories: 80, image: '/foods/tamarind-juice.png' },
-  { name: 'น้ำแอปเปิ้ล', calories: 90, image: '/foods/apple-juice.png' }
+const ForeignFoods = [
+ { name: 'พิซซ่า (1 ชิ้น)', calories: 285, image: '/foods/pizza.png' },
+  { name: 'สปาเกตตี้คาโบนารา', calories: 400, image: '/foods/spaghetti-carbonara.png' },
+  { name: 'เบอร์ริโต', calories: 290, image: '/foods/burrito.png' },
+  { name: 'ซูชิ (5 คำ)', calories: 200, image: '/foods/sushi.png' },
+  { name: 'สเต็กเนื้อ (200 กรัม)', calories: 500, image: '/foods/beef-steak.png' },
+  { name: 'นาโชส์ (1 ถุงเล็ก)', calories: 150, image: '/foods/nachos.png' },
+  { name: 'ครัวซองต์ (1 ชิ้น)', calories: 230, image: '/foods/croissant.png' },
+  { name: 'ชีสบาร์เกอร์', calories: 300, image: '/foods/cheeseburger.png' },
+  { name: 'ไก่ย่างบาร์บีคิว (1 ชิ้น)', calories: 250, image: '/foods/bbq-chicken.png' },
+  { name: 'ชิลลี่คอนคาร์เน่ (1 ถ้วย)', calories: 290, image: '/foods/chili-con-carne.png' },
+  { name: 'ปาเอยา (1 ถ้วย)', calories: 350, image: '/foods/paella.png' },
+  { name: 'แซนด์วิชทูน่า', calories: 280, image: '/foods/tuna-sandwich.png' },
+  { name: 'พาสต้าคาโบนาร่า', calories: 400, image: '/foods/pasta-carbonara.png' },
+  { name: 'ฟิชแอนด์ชิพส์', calories: 450, image: '/foods/fish-and-chips.png' },
+  { name: 'ข้าวผัดญี่ปุ่น', calories: 280, image: '/foods/japanese-fried-rice.png' },
+  { name: 'ซุปหัวหอม', calories: 150, image: '/foods/onion-soup.png' },
+  { name: 'เครปซอสส้ม', calories: 250, image: '/foods/orange-crepe.png' },
+  { name: 'แพนเค้กเนยน้ำผึ้ง', calories: 350, image: '/foods/pancake-honey-butter.png' },
+  { name: 'ซาลาเปาไส้หมูแดง', calories: 230, image: '/foods/bbq-pork-bun.png' },
+  { name: 'ราเมน (1 ชาม)', calories: 450, image: '/foods/ramen.png' }
 ];
+
 
 export default function SavoryPage() {
   const [cartCount, setCartCount] = useState(0);
-  const [foods, setFoods] = useState(drinkMenus);
+  const [foods, setFoods] = useState(ForeignFoods);
   const [showModal, setShowModal] = useState(false);
   const [newFoodName, setNewFoodName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -141,7 +102,7 @@ export default function SavoryPage() {
 
       <div className="tabs">
         <div className="tab-left">
-          <button className="active">เครื่องดื่ม</button>
+          <button className="active">ของว่าง</button>
           <button className="add-new" onClick={() => setShowModal(true)}>+ เพิ่มเมนูใหม่</button>
         </div>
         <div className="cart">

@@ -8,22 +8,27 @@ import BottomMenu from '../components/menu';
 const categories = [
   { name: 'อาหารคาว', icon: '/icons/savory.png' },
   { name: 'อาหารหวาน', icon: '/icons/sweet.png' },
-  { name: 'เครื่องดื่ม', icon: '/icons/drink.png' },
-  { name: 'ผลไม้', icon: '/icons/fruit.png' },
   { name: 'ของว่าง', icon: '/icons/snack.png' },
   { name: 'อาหารคลีน', icon: '/icons/clean.png' },
+  { name: 'อาหารเจ', icon: '/icons/Jfood.png' },
+  { name: 'อาหารต่างประเทศ', icon: '/icons/Foreign.png' },
+  { name: 'เครื่องดื่ม', icon: '/icons/drink.png' },
+  { name: 'เครื่องดื่มแอลกอฮอล์', icon: '/icons/alcohol.png' },
+  { name: 'ผักและผลไม้', icon: '/icons/fruit.png' },
+  { name: 'เนื้อสัตว์', icon: '/icons/meat.png' },
+  { name: 'ซอสและเครื่องปรุง', icon: '/icons/sauce.png' },
 ];
 
 const savoryFoods = [
-  { name: 'ข้าวผัดหมู', calories: 400, image: '/foods/fried-rice.png' },
-  { name: 'ต้มยำกุ้ง', calories: 150, image: '/foods/tomyam.png' },
-  { name: 'แกงเขียวหวานไก่', calories: 300, image: '/foods/green-curry.png' },
+  //{ name: 'ข้าวผัดหมู', calories: 400, image: '/foods/fried-rice.png' },
+  //{ name: 'ต้มยำกุ้ง', calories: 150, image: '/foods/tomyam.png' },
+//  { name: 'แกงเขียวหวานไก่', calories: 300, image: '/foods/green-curry.png' },
 ];
 
 const sweetFoods = [
-  { name: 'บัวลอย', calories: 250, image: '/foods/boiloy.png' },
-  { name: 'ไอศกรีม', calories: 180, image: '/foods/icecream.png' },
-  { name: 'ช็อกโกแลต', calories: 300, image: '/foods/chocolate.png' },
+//  { name: 'บัวลอย', calories: 250, image: '/foods/boiloy.png' },
+//  { name: 'ไอศกรีม', calories: 180, image: '/foods/icecream.png' },
+//  { name: 'ช็อกโกแลต', calories: 300, image: '/foods/chocolate.png' },
 ];
 
 export default function FoodLogPage() {

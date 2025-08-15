@@ -6,15 +6,26 @@ import { useState } from 'react';
 
 
 const sweetFoods = [
-  { name: 'ข้าวเหนียวสามสี', calories: 250, image: '/foods/sweet-boiloy.png' },
-  { name: 'ไอศกรีมวานิลลาโคน', calories: 250, image: '/foods/vanilla-icecream.png' },
-  { name: 'เค้กช็อกโกแลต', calories: 350, image: '/foods/choc-cake.png' },
-  { name: 'พาร์เฟ่ต์สตรอว์เบอร์รี่', calories: 350, image: '/foods/straw-parfait.png' },
-  { name: 'ชูครีม/แอแคลร์', calories: 250, image: '/foods/eclair.png' },
-  { name: 'ชีสเค้กสตรอว์เบอร์รี่', calories: 350, image: '/foods/straw-cheesecake.png' },
-  { name: 'บราวนี่หน้าโกโก้กรุบ', calories: 400, image: '/foods/brownie.png' },
-  { name: 'สตรอว์เบอร์รี่ชอร์ตเค้ก', calories: 350, image: '/foods/shortcake.png' },
-  { name: 'วุ้นผลไม้ / เจลลี่ผลไม้', calories: 180, image: '/foods/fruit-jelly.png' },
+  { name: 'ทับทิมกรอบ', calories: 200, image: '/foods/tub-tim-krob.png' },
+  { name: 'ขนมชั้น', calories: 220, image: '/foods/khanom-chan.png' },
+  { name: 'บัวลอย', calories: 240, image: '/foods/bua-loi.png' },
+  { name: 'ข้าวเหนียวมะม่วง', calories: 330, image: '/foods/khao-niew-mamuang.png' },
+  { name: 'ลูกชุบ', calories: 150, image: '/foods/look-chup.png' },
+  { name: 'เครปเค้ก', calories: 350, image: '/foods/crepe-cake.png' },
+  { name: 'พายสัปปะรด', calories: 270, image: '/foods/pineapple-pie.png' },
+  { name: 'ชีสเค้ก', calories: 400, image: '/foods/cheesecake.png' },
+  { name: 'ทองหยิบ', calories: 210, image: '/foods/thong-yip.png' },
+  { name: 'ฝอยทอง', calories: 180, image: '/foods/foi-thong.png' },
+  { name: 'วุ้นกะทิ', calories: 150, image: '/foods/woon-kati.png' },
+  { name: 'เค้กช็อกโกแลต', calories: 450, image: '/foods/chocolate-cake.png' },
+  { name: 'บราวนี่', calories: 400, image: '/foods/brownie.png' },
+  { name: 'ขนมปังสังขยา', calories: 250, image: '/foods/khanom-pang-sangkaya.png' },
+  { name: 'โรตีใส่นม', calories: 350, image: '/foods/roti-sai-nom.png' },
+  { name: 'โรตีโอวัลติน', calories: 370, image: '/foods/roti-ovaltine.png' },
+  { name: 'เค้กกล้วยหอม', calories: 280, image: '/foods/banana-cake.png' },
+  { name: 'ขนมต้ม', calories: 200, image: '/foods/khanom-tom.png' },
+  { name: 'ขนมกล้วย', calories: 220, image: '/foods/khanom-kluai.png' },
+  { name: 'ขนมถ้วย', calories: 150, image: '/foods/khanom-tuay.png' }
 ];
 
 export default function SweetPage() {
